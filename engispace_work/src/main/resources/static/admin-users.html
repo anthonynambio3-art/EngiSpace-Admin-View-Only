@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>User Accounts | EngiSpace</title>
+    <link rel="stylesheet" href="css/style.css">
+</head>
+<body>
+<div class="app-container">
+    <aside class="sidebar" id="sidebar">
+        <div class="brand"><div class="brand-icon">E</div><div><h2>EngiSpace</h2><span>Classroom Management</span></div></div>
+        <div class="menu-label">MAIN MENU</div>
+        <nav class="navigation">
+            <a href="index.html" class="nav-link"><span>▦</span> Dashboard</a>
+            <a href="availability.html" class="nav-link"><span>⌕</span> Find a Classroom</a>
+            <a href="classrooms.html" class="nav-link admin-only-nav"><span>▤</span> Manage Classrooms</a>
+            <a href="class-schedules.html" class="nav-link admin-only-nav"><span>▦</span> Manage Schedules</a>
+            <a href="admin-users.html" class="nav-link admin-only-nav"><span>♙</span> User Accounts</a>
+        </nav>
+        <div class="sidebar-bottom"><div class="sidebar-note"><strong>EngiSpace</strong><p>Making classroom management easier.</p></div><span class="version">Version 1.0.0</span></div>
+    </aside>
+    <main class="main-content">
+        <header class="topbar">
+            <button type="button" class="menu-toggle" id="menuToggle">☰</button>
+            <div class="page-heading"><h1>User Accounts</h1><p>Manage authorized EngiSpace users</p></div>
+        </header>
+        <section class="content">
+            <div class="section-heading"><h2>Create Regular User</h2><p>Only administrators can create regular user accounts.</p></div>
+            <div class="table-container user-form-card">
+                <form id="createUserForm" class="user-create-form">
+                    <div class="form-group"><label for="fullName">Full Name</label><input id="fullName" required maxlength="100" placeholder="Enter user's full name"></div>
+                    <div class="form-group"><label for="newUsername">Username</label><input id="newUsername" required maxlength="40" autocomplete="off" placeholder="Create a username"></div>
+                    <div class="form-group"><label for="newPassword">Temporary Password</label><input id="newPassword" type="password" required minlength="8" autocomplete="new-password" placeholder="At least 8 characters"></div>
+                    <button type="submit" class="primary-btn" id="createUserButton">Create User</button>
+                    <p id="userFormMessage" class="form-message" role="status"></p>
+                </form>
+            </div>
+            <div class="section-heading user-list-heading"><h2>Registered Accounts</h2><p>Administrator and regular user accounts.</p></div>
+            <div class="table-container">
+                <table class="schedule-table"><thead><tr><th>Full Name</th><th>Username</th><th>Role</th><th>Status</th><th>Action</th></tr></thead><tbody id="usersTableBody"><tr><td colspan="5" style="text-align:center">Loading accounts...</td></tr></tbody></table>
+            </div>
+            <footer><p>© 2026 EngiSpace | College of Engineering</p><span>Marinduque State University</span></footer>
+        </section>
+    </main>
+</div>
+<script src="js/dashboard.js"></script>
+<script src="js/admin-users.js"></script>
+<script src="js/auth.js"></script>
+</body>
+</html>

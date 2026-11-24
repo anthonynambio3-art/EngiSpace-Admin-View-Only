@@ -1,0 +1,15 @@
+ENGISPACE UPDATE
+
+Changes in this version:
+1. Removed the Building Structure link from the navigation menus. The existing tree page and tree data are retained in the project, but are no longer linked in the menu.
+2. Added an admin-only Manage Schedules page.
+3. Admin can add, edit, search, and delete official class schedules.
+4. Official class schedules are stored separately in src/main/resources/data/class-schedules.json and use /api/class-schedules.
+5. Official class schedules do not create occupancy records and do not change a classroom's actual Vacant/Occupied status.
+6. Kept the Room Availability search field and live filtering by room name, room ID, building, floor, and room type.
+7. Regular users cannot access Manage Schedules.
+
+Important:
+- Existing actual occupancy records remain in schedules.json and are not migrated or overwritten.
+- The Java project specifies Java 25. This environment only has Java 21 and could not download Maven dependencies, so a full Maven build/runtime test was not possible here.
+- JavaScript syntax checks were run for the updated scripts.

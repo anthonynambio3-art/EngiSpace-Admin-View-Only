@@ -1,0 +1,19 @@
+ENGISPACE - STEP 1 LOGIN AND USER ACCOUNTS
+
+1. Open this project in VS Code.
+2. Run: .\mvnw.cmd spring-boot:run
+3. Open: http://localhost:8080/login.html
+4. Initial administrator login for local development:
+   Username: admin
+   Password: ChangeMe123!
+5. After signing in, open User Accounts in the sidebar. Only the Admin can see this page and create Regular User accounts.
+6. Create a regular user with a username and a password of at least 8 characters.
+7. Log out and sign in using the new regular user account to test it.
+
+IMPORTANT SECURITY NOTES
+- Change the initial admin password before deploying this application publicly.
+- Set environment variables ENGISPACE_ADMIN_USERNAME and ENGISPACE_ADMIN_PASSWORD before the first start on a deployed environment.
+- User passwords are stored as BCrypt hashes in src/main/resources/data/users.json. Plain-text passwords are not written to the JSON file.
+- User accounts are stored in src/main/resources/data/users.json by default.
+- This is Step 1. Actual occupancy records, automatic Time In/Time Out, and required exit-photo proof are included in the current workflow. EngiSpace does not support reservations.
+- Build verification could not be completed in this environment because Maven could not download its distribution. Run the project locally to let Maven resolve dependencies and report any build errors.

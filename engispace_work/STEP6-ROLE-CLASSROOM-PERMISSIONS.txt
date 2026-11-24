@@ -1,0 +1,17 @@
+ENGISPACE - ROLE AND CLASSROOM PERMISSIONS
+
+ADMIN
+- Create, edit, and delete classroom records.
+- Set each room type as Regular Classroom or Laboratory.
+- View all occupancy records.
+- Inspect submitted classroom exit photos.
+- Use the occupancy workflow when needed.
+
+REGULAR USER
+- View classroom availability and room details.
+- Start occupancy in a vacant classroom.
+- Submit the required exit photo to end their own occupancy.
+- View their own occupancy history.
+- Cannot create, edit, or delete classroom records.
+
+There is no reservation or advance-booking feature.

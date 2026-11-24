@@ -1,0 +1,122 @@
+
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <title>Building Structure | EngiSpace</title>
+
+    <link rel="stylesheet" href="css/style.css">
+</head>
+
+<body>
+
+    <div class="app-container">
+
+        <!-- SIDEBAR -->
+        <aside class="sidebar" id="sidebar">
+
+            <div class="brand">
+                <div class="brand-icon">E</div>
+                <div>
+                    <h2>EngiSpace</h2>
+                    <span>Classroom Management</span>
+                </div>
+            </div>
+
+            <div class="menu-label">MAIN MENU</div>
+
+            <nav class="navigation">
+            <a href="index.html" class="nav-link"><span>▦</span> Dashboard</a>
+            <a href="availability.html" class="nav-link"><span>⌕</span> Find a Classroom</a>
+            <a href="classrooms.html" class="nav-link admin-only-nav"><span>▤</span> Manage Classrooms</a>
+            <a href="class-schedules.html" class="nav-link admin-only-nav"><span>▦</span> Manage Schedules</a>
+            <a href="admin-users.html" class="nav-link admin-only-nav"><span>♙</span> User Accounts</a>
+        </nav>
+
+            <div class="sidebar-bottom">
+                <div class="sidebar-note">
+                    <strong>EngiSpace</strong>
+                    <p>Making classroom management easier.</p>
+                </div>
+
+                <span class="version">Version 1.0.0</span>
+            </div>
+
+        </aside>
+
+        <!-- MAIN CONTENT -->
+        <main class="main-content">
+
+            <header class="topbar">
+
+                <button type="button" class="menu-toggle" id="menuToggle">
+                    ☰
+                </button>
+
+                <div class="page-heading">
+                    <h1>Building Structure</h1>
+                    <p>College of Engineering Building</p>
+                </div>
+
+                <div class="topbar-date" id="currentDate"></div>
+
+            </header>
+
+            <section class="content">
+
+                <div class="section-heading">
+                    <h2>Building Hierarchy</h2>
+                    <p>
+                        Explore the buildings, floors, and classrooms
+                        under the College of Engineering.
+                    </p>
+                </div>
+
+                <!-- TREE CONTAINER -->
+                <div class="tree-container">
+
+                    <div class="tree-header">
+                        <div>
+                            <h2 class="tree-heading">
+                                College of Engineering
+                            </h2>
+
+                            <p class="tree-description">
+                                Click a building or floor to expand
+                                or collapse its contents.
+                            </p>
+                        </div>
+                    </div>
+
+                    <div id="treeDisplay">
+                        <p>Loading building structure...</p>
+                    </div>
+
+                    <p class="tree-note">
+                        EngiSpace Classroom Management System
+                    </p>
+
+                </div>
+
+                <footer>
+                    <p>© 2026 EngiSpace | College of Engineering</p>
+                    <span>Marinduque State University</span>
+                </footer>
+
+            </section>
+
+        </main>
+
+    </div>
+
+    <!-- JAVASCRIPT -->
+    <script src="js/auth.js"></script>
+<script src="js/dashboard.js"></script>
+    <script src="js/tree.js"></script>
+
+</body>
+
+</html>

@@ -1,0 +1,13 @@
+[ {
+  "username" : "admin",
+  "fullName" : "EngiSpace Administrator",
+  "password" : "$2a$10$hhqLY.6AWvlVOXy4J5Qk9OxB20v.4MlvR1OwD0k.HCnKx7nUSpx4C",
+  "role" : "ADMIN",
+  "enabled" : true
+}, {
+  "username" : "25B1356",
+  "fullName" : "Anthony L. Nambio",
+  "password" : "$2a$10$8GIL5Y04zLMPjHfAbuF3HunMTmRKSAIgfMX1PkyG6XPR8NKmcbis.",
+  "role" : "USER",
+  "enabled" : true
+} ]

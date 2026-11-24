@@ -1,0 +1,16 @@
+[
+  {
+    "roomId": "101",
+    "roomName": "Room 101",
+    "building": "Old Engineering Building",
+    "floor": "1st Floor",
+    "roomType": "CLASSROOM"
+  },
+  {
+    "roomId": "23",
+    "roomName": "ELB 23",
+    "building": "ELB",
+    "floor": "2nd Floor",
+    "roomType": "CLASSROOM"
+  }
+]

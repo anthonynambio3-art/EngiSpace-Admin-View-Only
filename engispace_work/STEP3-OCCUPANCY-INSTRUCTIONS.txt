@@ -1,0 +1,21 @@
+ENGISPACE - ACTUAL CLASSROOM OCCUPANCY
+
+There is no reservation or advance-booking feature in this version.
+
+REGULAR USER WORKFLOW
+1. Open Room Availability.
+2. Choose a vacant classroom and click Occupy Room.
+3. Enter Program, Section, and Purpose (required).
+4. Instructor and Subject are optional for regular classrooms.
+5. For laboratory rooms, Instructor and Subject are both required.
+6. Confirm Occupancy. The server records the logged-in user and Time In automatically.
+7. When leaving, click Leave Room and upload a photo of the cleaned classroom.
+8. After a valid photo is submitted, the server records Time Out and marks the room vacant.
+
+RULES
+- Only one active occupancy is allowed per classroom.
+- Only the user who started an occupancy can end it.
+- The exit photo is mandatory; JPG, PNG, and WEBP are accepted up to 5 MB.
+- Users cannot manually set Time In or Time Out.
+- Completed records remain in the user's occupancy history.
+- Admin can view all occupancy records and inspect submitted photos.

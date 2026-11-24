@@ -1,0 +1,357 @@
+
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Classrooms | EngiSpace</title>
+
+    <link rel="stylesheet" href="css/style.css">
+
+    <style>
+        .page-content {
+            padding: 30px;
+        }
+
+        .page-heading {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            gap: 15px;
+            margin-bottom: 25px;
+        }
+
+        .page-heading h2 {
+            margin-bottom: 5px;
+        }
+
+        .search-input,
+        .classroom-form input,
+        .classroom-form select {
+            padding: 12px;
+            border: 1px solid #dce2eb;
+            border-radius: 8px;
+            font: inherit;
+            width: 100%;
+            box-sizing: border-box;
+        }
+
+        .search-input {
+            max-width: 350px;
+            margin-bottom: 20px;
+        }
+
+        .primary-btn,
+        .action-btn {
+            border: none;
+            padding: 10px 16px;
+            border-radius: 8px;
+            cursor: pointer;
+            font-weight: 600;
+        }
+
+        .primary-btn {
+            background: #2563eb;
+            color: white;
+        }
+
+        .primary-btn:hover {
+            background: #1d4ed8;
+        }
+
+        .action-btn {
+            margin-right: 5px;
+            background: #e8efff;
+            color: #1d4ed8;
+        }
+
+        .delete-btn {
+            background: #fee2e2;
+            color: #b91c1c;
+        }
+
+        .table-container {
+            background: white;
+            border-radius: 12px;
+            padding: 20px;
+            overflow-x: auto;
+            box-shadow: 0 2px 10px rgba(0, 0, 0, 0.04);
+        }
+
+        .classroom-table {
+            width: 100%;
+            border-collapse: collapse;
+            min-width: 650px;
+        }
+
+        .classroom-table th,
+        .classroom-table td {
+            padding: 15px;
+            text-align: left;
+            border-bottom: 1px solid #edf0f5;
+        }
+
+        .classroom-table th {
+            color: #64748b;
+            font-size: 13px;
+        }
+
+        .modal {
+            display: none;
+            position: fixed;
+            inset: 0;
+            background: rgba(15, 23, 42, 0.5);
+            justify-content: center;
+            align-items: center;
+            padding: 20px;
+            z-index: 1000;
+        }
+
+        .modal.show {
+            display: flex;
+        }
+
+        .modal-content {
+            background: white;
+            width: 100%;
+            max-width: 450px;
+            padding: 25px;
+            border-radius: 14px;
+            max-height: 90vh;
+            overflow-y: auto;
+        }
+
+        .classroom-form {
+            display: grid;
+            gap: 15px;
+            margin-top: 20px;
+        }
+
+        .classroom-form label {
+            display: block;
+            margin-bottom: 7px;
+            font-weight: 600;
+        }
+
+        .form-actions {
+            display: flex;
+            justify-content: flex-end;
+            gap: 10px;
+        }
+
+        .secondary-btn {
+            background: #e2e8f0;
+            color: #334155;
+        }
+
+        .message {
+            margin-bottom: 15px;
+            color: #b91c1c;
+        }
+
+        @media (max-width: 600px) {
+            .page-content {
+                padding: 18px;
+            }
+
+            .page-heading {
+                align-items: flex-start;
+                flex-direction: column;
+            }
+
+            .search-input {
+                max-width: 100%;
+            }
+        }
+    </style>
+</head>
+
+<body>
+
+    <div class="app-container">
+
+        <!-- Sidebar -->
+        <aside class="sidebar" id="sidebar">
+
+            <div class="brand">
+                <div class="brand-icon">E</div>
+                <div>
+                    <h2>EngiSpace</h2>
+                    <span>Classroom Management</span>
+                </div>
+            </div>
+
+            <div class="menu-label">MAIN MENU</div>
+
+            <nav class="navigation">
+            <a href="index.html" class="nav-link"><span>▦</span> Dashboard</a>
+            <a href="availability.html" class="nav-link"><span>⌕</span> Find a Classroom</a>
+            <a href="classrooms.html" class="nav-link admin-only-nav"><span>▤</span> Manage Classrooms</a>
+            <a href="class-schedules.html" class="nav-link admin-only-nav"><span>▦</span> Manage Schedules</a>
+            <a href="admin-users.html" class="nav-link admin-only-nav"><span>♙</span> User Accounts</a>
+        </nav>
+
+            <div class="sidebar-bottom">
+
+                <div class="sidebar-note">
+                    <strong>EngiSpace</strong>
+                    <p>Making classroom management easier.</p>
+                </div>
+
+                <span class="version">Version 1.0.0</span>
+
+            </div>
+
+        </aside>
+
+        <!-- Main Content -->
+        <main class="main-content">
+
+            <header class="topbar">
+
+                <button class="menu-toggle" id="menuToggle">☰</button>
+
+                <div class="page-heading">
+                    <h1>Classroom Management</h1>
+                    <p>Manage College of Engineering classrooms</p>
+                </div>
+
+                <div class="topbar-date" id="currentDate"></div>
+
+            </header>
+
+            <section class="page-content">
+
+                <div class="page-heading">
+
+                    <div>
+                        <h2>Classrooms</h2>
+                        <p>View and manage classroom records.</p>
+                    </div>
+
+                    <button
+                        type="button"
+                        class="primary-btn"
+                        id="addButton"
+                        onclick="openClassroomModal()"
+                        hidden>
+                        + Add Classroom
+                    </button>
+
+                </div>
+
+                <input
+                    type="text"
+                    id="searchInput"
+                    class="search-input"
+                    placeholder="Search by Room ID or Room Name..."
+                >
+
+                <p id="message" class="message"></p>
+
+                <div class="table-container">
+
+                    <table class="classroom-table">
+
+                        <thead>
+                            <tr>
+                                <th>Room ID</th>
+                                <th>Room Name</th>
+                                <th>Building</th>
+                                <th>Floor</th>
+                                <th>Room Type</th>
+                                <th id="actionsHeader" hidden>Actions</th>
+                            </tr>
+                        </thead>
+
+                        <tbody id="classroomTableBody">
+                            <tr>
+                                <td colspan="6">Loading classrooms...</td>
+                            </tr>
+                        </tbody>
+
+                    </table>
+
+                </div>
+
+            </section>
+
+            <!-- Add/Edit Classroom Modal -->
+            <div class="modal" id="classroomModal" hidden>
+
+                <div class="modal-content">
+
+                    <h2 id="modalTitle">Add Classroom</h2>
+
+                    <form id="classroomForm" class="classroom-form">
+
+                        <div>
+                            <label for="roomId">Room ID</label>
+                            <input type="text" id="roomId" required>
+                        </div>
+
+                        <div>
+                            <label for="roomName">Room Name</label>
+                            <input type="text" id="roomName" required>
+                        </div>
+
+                        <div>
+                            <label for="building">Building</label>
+
+                            <select id="building" required>
+                                <option value="">Select Building</option>
+                                <option value="ELB">ELB</option>
+                                <option value="Old Engineering Building">
+                                    Old Engineering Building
+                                </option>
+                            </select>
+                        </div>
+
+                        <div>
+                            <label for="roomType">Room Type</label>
+                            <select id="roomType" required><option value="CLASSROOM">Regular Classroom</option><option value="LABORATORY">Laboratory</option></select>
+                        </div>
+
+                        <div>
+                            <label for="floor">Floor</label>
+
+                            <select id="floor" required>
+                                <option value="">Select Floor</option>
+                            </select>
+                        </div>
+
+                        <p id="formError" class="message"></p>
+
+                        <div class="form-actions">
+
+                            <button
+                                type="button"
+                                class="action-btn secondary-btn"
+                                id="cancelButton"
+                                onclick="closeClassroomModal()">
+                                Cancel
+                            </button>
+
+                            <button type="submit" class="primary-btn">
+                                Save Classroom
+                            </button>
+
+                        </div>
+
+                    </form>
+
+                </div>
+
+            </div>
+
+        </main>
+
+    </div>
+
+    <script src="js/auth.js"></script>
+<script src="js/dashboard.js"></script>
+    <script src="js/classrooms.js"></script>
+
+</body>
+</html>

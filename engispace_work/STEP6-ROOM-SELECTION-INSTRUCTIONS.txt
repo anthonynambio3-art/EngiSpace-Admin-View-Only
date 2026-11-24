@@ -1,0 +1,10 @@
+ENGISPACE - ROOM AVAILABILITY AND ROOM TYPES
+
+1. Room Availability lists classrooms grouped by the saved classroom records.
+2. Vacant rooms show an Occupy Room action.
+3. Occupied rooms show the occupant and Time In.
+4. Only the owner of an active occupancy sees the Leave Room action.
+5. Admins can classify each classroom as Regular Classroom or Laboratory in Classroom Management.
+6. Program, Section, and Purpose are required for all occupancies.
+7. Instructor and Subject are optional for regular classrooms, but required for laboratories.
+8. The system does not provide reservations, advance booking, or future time-slot selection.
