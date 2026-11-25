@@ -72,16 +72,19 @@
         const body = byId('myHistory'); if (!body) return;
         const admin = currentUser?.role === 'ADMIN';
         const historyWrap = body.closest('.history-wrap');
-        if (admin) { if (historyWrap) historyWrap.style.display = 'none'; return; }
+        if (historyWrap) historyWrap.style.display = '';
         const heading = historyWrap?.querySelector('h2');
-        if (heading) heading.textContent = admin ? 'All Occupancy Records' : 'My Occupancy History';
+        if (heading) heading.textContent = admin ? 'All Classroom Usage History' : 'My Occupancy History';
         body.innerHTML = '';
         const sorted = [...historyRecords].sort((a,b) => String(b.timeIn || '').localeCompare(String(a.timeIn || '')));
-        if (!sorted.length) { body.innerHTML = `<tr><td colspan="8">${admin ? 'No occupancy records yet.' : 'You do not have any occupancy records yet.'}</td></tr>`; return; }
+        if (!sorted.length) { body.innerHTML = `<tr><td colspan="10">${admin ? 'No occupancy records yet.' : 'You do not have any occupancy records yet.'}</td></tr>`; return; }
         sorted.forEach(record => {
             const room = rooms.find(item => String(item.roomId) === String(record.roomId));
             const row = document.createElement('tr');
-            [room?.roomName || record.roomId, `${record.program || '—'} / ${record.section || '—'}`, record.subject || '—', record.purpose || '—', fmt(record.timeIn), fmt(record.timeOut), record.status || '—'].forEach(value => { const cell = document.createElement('td'); cell.textContent = value; row.appendChild(cell); });
+            const values = admin
+                ? [record.occupant || record.requestedBy || '—', room?.roomName || record.roomId, `${record.program || '—'} / ${record.section || '—'}`, record.instructor || '—', record.subject || '—', record.purpose || '—', fmt(record.timeIn), fmt(record.timeOut), record.status || '—']
+                : [room?.roomName || record.roomId, `${record.program || '—'} / ${record.section || '—'}`, record.subject || '—', record.purpose || '—', fmt(record.timeIn), fmt(record.timeOut), record.status || '—'];
+            values.forEach(value => { const cell = document.createElement('td'); cell.textContent = value; row.appendChild(cell); });
             const photo = document.createElement('td');
             if (admin && record.exitPhoto) { const link = document.createElement('a'); link.href = `/api/schedules/proof/${encodeURIComponent(record.exitPhoto)}`; link.target = '_blank'; link.rel = 'noopener'; link.textContent = 'View photo'; photo.appendChild(link); }
             else photo.textContent = record.exitPhoto ? 'Submitted' : '—';
