@@ -1,9 +1,0 @@
-ENGISPACE - LEAVE ROOM AND PHOTO SUBMISSION
-
-1. A user with an active occupancy clicks Leave Room.
-2. The user must upload a photo showing the classroom after cleaning.
-3. The server validates the image type and 5 MB size limit.
-4. The server saves the photo, records Time Out automatically, and changes the occupancy status to COMPLETED.
-5. A completed occupancy no longer marks the classroom as occupied.
-6. Only the user who started the active occupancy can submit its exit photo.
-7. Admin can inspect submitted proof photos through the protected proof endpoint.
