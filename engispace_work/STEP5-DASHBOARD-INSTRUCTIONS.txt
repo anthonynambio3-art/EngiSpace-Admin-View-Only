@@ -1,6 +1,0 @@
-ENGISPACE - OCCUPANCY DASHBOARD
-
-- The dashboard groups rooms by building and floor.
-- Each room is marked VACANT or OCCUPIED based on active occupancy records.
-- Occupied room details include occupant, program, section, subject, purpose, and Time In.
-- The dashboard has no reserved or upcoming room status because EngiSpace does not support advance reservations.
